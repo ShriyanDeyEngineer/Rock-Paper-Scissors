@@ -149,7 +149,7 @@ function getHumanChoice()
 {
     let choice = prompt("'rock', 'paper', or 'scissors'?");
 
-    choice.toLowerCase;
+    choice.toLowerCase();
 
     if(choice == "rock")
     {
@@ -217,3 +217,29 @@ function playRound(humanChoice, computerChoice)
 //main program
 let humanScore = 0, computerScore = 0;
 
+for(let i = 0; i < 5; i++)
+{
+    let cc = getComputerChoice();
+    console.log(cc);
+
+    let hc = getHumanChoice();
+    console.log(hc);
+
+    playRound(hc, cc);
+}
+
+if(humanScore == computerScore)
+{
+    console.log("This game is a draw!");
+    console.log("Human: " + humanScore + " || Computer: " + computerScore);
+}
+else if(humanScore > computerScore)
+{
+    console.log("You won this game!");
+    console.log("Human: " + humanScore + "|| Computer: " + computerScore);
+}
+else if(humanScore < computerScore)
+{
+    console.log("You lost this game!");
+    console.log("Human: " + humanScore + "|| Computer: " + computerScore);
+}
