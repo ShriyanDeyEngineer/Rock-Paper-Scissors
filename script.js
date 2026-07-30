@@ -93,6 +93,7 @@ playRound(humanChoice, computerChoice)
 }
 -----------------------------
 
+
 -----main algorithm-----
 
 declare variables "humanScore" and "computerScore" to hold/keep track of the score, initialize them to 0
@@ -124,4 +125,95 @@ else if(humanScore is less than computerScore)
 ----------------------------------------------------*/
 
 
+
+//defining the functions
+function getComputerChoice()
+{
+    let choice = (Math.random() * 100) % 3;
+
+    if(choice == 1)
+    {
+        return "rock";
+    }
+    else if(choice == 2)
+    {
+        return "paper";
+    }
+    else if(choice == 3)
+    {
+        return "scissors";
+    }
+}
+
+function getHumanChoice()
+{
+    let choice = prompt("'rock', 'paper', or 'scissors'?");
+
+    choice.toLowerCase;
+
+    if(choice == "rock")
+    {
+        return "rock";
+    }
+    else if(choice == "paper")
+    {
+        return "paper";
+    }
+    else if(choice == "scissors")
+    {
+        return "scissors";
+    }
+}
+
+function playRound(humanChoice, computerChoice)
+{
+    if(humanChoice == "rock" && computerChoice == "rock")
+    {
+        console.log("This round is a draw!");
+    }
+    else if(computerChoice == "scissors")
+    {
+        console.log("You won this round!");
+        humanScore++;
+    }
+    else if(computerChoice == "paper")
+    {
+        console.log("You lost this round!");
+        computerScore++;
+    }
+
+    if(humanChoice == "paper" && computerChoice == "paper")
+    {
+        console.log("This round is a draw!")
+    }
+    else if(computerChoice == "rock")
+    {
+        console.log("You won this round!");
+        humanScore++;
+    }
+    else if(computerChoice == "Scissors")
+    {
+        console.log("You lost this round!");
+        computerScore++;
+    }
+
+    if(humanChoice == "scissors" && computerChoice == "scissors")
+    {
+        console.log("This round is a draw!");
+    }
+    else if(computerChoice == "paper")
+    {
+        console.log("You won this round!")
+        humanScore++;
+    }
+    else if(computerChoice == "rock")
+    {
+        console.log("You lost this round!")
+        computerScore++;
+    }
+}
+
+
+//main program
+let humanScore = 0, computerScore = 0;
 
