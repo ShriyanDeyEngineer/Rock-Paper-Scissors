@@ -129,18 +129,22 @@ else if(humanScore is less than computerScore)
 //defining the functions
 function getComputerChoice()
 {
-    let choice = (Math.random() * 100) % 3;
+    let choice = Math.floor((Math.random() * 100) % 3 + 1);
+    //console.log("THIS IS THE COMPUTER'S CHOICE NUMBER: " + choice);
 
     if(choice == 1)
     {
+        console.log("The computer picked rock");
         return "rock";
     }
     else if(choice == 2)
     {
+        console.log("The computer picked paper");
         return "paper";
     }
     else if(choice == 3)
     {
+        console.log("The computer picked scissors");
         return "scissors";
     }
 }
@@ -148,8 +152,11 @@ function getComputerChoice()
 function getHumanChoice()
 {
     let choice = prompt("'rock', 'paper', or 'scissors'?");
+    console.log("You picked " + choice);
+    //console.log("THIS IS THE USER'S CHOICE: " + choice);
 
     choice.toLowerCase();
+    //console.log("THIS IS THE USER'S CHOICE: " + choice);
 
     if(choice == "rock")
     {
@@ -167,31 +174,34 @@ function getHumanChoice()
 
 function playRound(humanChoice, computerChoice)
 {
-    if(humanChoice == "rock" && computerChoice == "rock")
+    if(humanChoice == "rock") //one way to write this is a nested conditional
     {
-        console.log("This round is a draw!");
-    }
-    else if(computerChoice == "scissors")
-    {
-        console.log("You won this round!");
-        humanScore++;
-    }
-    else if(computerChoice == "paper")
-    {
-        console.log("You lost this round!");
-        computerScore++;
+        if(computerChoice == "rock")
+        {
+            console.log("This round is a draw!");
+        }
+        if(computerChoice == "scissors")
+        {
+            console.log("You won this round!");
+            humanScore++;
+        }
+        if(computerChoice == "paper")
+        {
+            console.log("You lost this round!");
+            computerScore++;
+        }
     }
 
-    if(humanChoice == "paper" && computerChoice == "paper")
+    if(humanChoice == "paper" && computerChoice == "paper") //another way to write this is conditional with if else statements and boolean operators
     {
         console.log("This round is a draw!")
     }
-    else if(computerChoice == "rock")
+    else if(humanChoice == "paper" && computerChoice == "rock")
     {
         console.log("You won this round!");
         humanScore++;
     }
-    else if(computerChoice == "Scissors")
+    else if(humanChoice == "paper" && computerChoice == "Scissors")
     {
         console.log("You lost this round!");
         computerScore++;
@@ -201,12 +211,12 @@ function playRound(humanChoice, computerChoice)
     {
         console.log("This round is a draw!");
     }
-    else if(computerChoice == "paper")
+    else if(humanChoice == "scissors" && computerChoice == "paper")
     {
         console.log("You won this round!")
         humanScore++;
     }
-    else if(computerChoice == "rock")
+    else if(humanChoice == "scissors" && computerChoice == "rock")
     {
         console.log("You lost this round!")
         computerScore++;
@@ -217,15 +227,18 @@ function playRound(humanChoice, computerChoice)
 //main program
 let humanScore = 0, computerScore = 0;
 
-for(let i = 0; i < 5; i++)
+for(let i = 1; i <= 5; i++)
 {
+    console.log("ROUND " + i + ":");
+
     let cc = getComputerChoice();
-    console.log(cc);
+    //console.log(cc);
 
     let hc = getHumanChoice();
-    console.log(hc);
+    //console.log(hc);
 
     playRound(hc, cc);
+    console.log("");
 }
 
 if(humanScore == computerScore)
@@ -236,10 +249,10 @@ if(humanScore == computerScore)
 else if(humanScore > computerScore)
 {
     console.log("You won this game!");
-    console.log("Human: " + humanScore + "|| Computer: " + computerScore);
+    console.log("Human: " + humanScore + " || Computer: " + computerScore);
 }
 else if(humanScore < computerScore)
 {
     console.log("You lost this game!");
-    console.log("Human: " + humanScore + "|| Computer: " + computerScore);
+    console.log("Human: " + humanScore + " || Computer: " + computerScore);
 }
