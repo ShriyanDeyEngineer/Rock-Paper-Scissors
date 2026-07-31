@@ -151,12 +151,13 @@ function getComputerChoice()
 
 function getHumanChoice()
 {
-    let choice = prompt("'rock', 'paper', or 'scissors'?");
+    let choice = prompt("'rock', 'paper', or 'scissors'? Enter 5 choices");
     console.log("You picked " + choice);
     //console.log("THIS IS THE USER'S CHOICE: " + choice);
 
-    choice.toLowerCase();
+    choice = choice.toLowerCase();
     //console.log("THIS IS THE USER'S CHOICE: " + choice);
+    console.log(choice);
 
     if(choice == "rock")
     {
