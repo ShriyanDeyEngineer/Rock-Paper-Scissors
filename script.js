@@ -228,8 +228,8 @@ function playRound(humanChoice, computerChoice)
 //main program
 let humanScore = 0, computerScore = 0;
 
-for(let i = 1; i <= 5; i++)
-{
+//for(let i = 1; i <= 5; i++)
+//{
     console.log("ROUND " + i + ":");
 
     let cc = getComputerChoice();
@@ -240,7 +240,7 @@ for(let i = 1; i <= 5; i++)
 
     playRound(hc, cc);
     console.log("");
-}
+//}
 
 if(humanScore == computerScore)
 {
