@@ -41,29 +41,23 @@ function getHumanChoice(choice)
 
 function playRound(humanChoice, computerChoice)
 {
-    if(humanChoice == "rock") //one way to write this is a nested conditional
-    {
-        if(computerChoice == "rock")
-        {
-            document.getElementById("result").innerText = "This round is a draw!";
-        }
-        else if(computerChoice == "scissors")
-        {
-            document.getElementById("result").innerText = "You won this round!";
-            humanScore++;
-        }
-        else if(computerChoice == "paper")
-        {
-            document.getElementById("result").innerText = "You lost this round!";
-            computerScore++;
-        }
-    }
-
-    if(humanChoice == "paper" && computerChoice == "paper") //another way to write this is conditional with if else statements and boolean operators
+    if(humanChoice === computerChoice)
     {
         document.getElementById("result").innerText = "This round is a draw!";
     }
-    else if(humanChoice == "paper" && computerChoice == "rock")
+
+    if(humanChoice == "rock" && computerChoice == "scissors")
+    {
+        document.getElementById("result").innerText = "You won this round!";
+        humanScore++;
+    }
+    else if(humanChoice == "rock" && computerChoice == "paper")
+    {
+        document.getElementById("result").innerText = "You lost this round!";
+        computerScore++;
+    }
+
+    if(humanChoice == "paper" && computerChoice == "rock")
     {
         document.getElementById("result").innerText = "You won this round!";
         humanScore++;
@@ -74,11 +68,7 @@ function playRound(humanChoice, computerChoice)
         computerScore++;
     }
 
-    if(humanChoice == "scissors" && computerChoice == "scissors")
-    {
-        document.getElementById("result").innerText = "This round is a draw!";
-    }
-    else if(humanChoice == "scissors" && computerChoice == "paper")
+    if(humanChoice == "scissors" && computerChoice == "paper")
     {
         document.getElementById("result").innerText = "You won this round!";
         humanScore++;
@@ -94,7 +84,7 @@ function playRound(humanChoice, computerChoice)
 }
 
 
-//main program
+//main program (implementing the declared functions into the buttons)
 let humanScore = 0, computerScore = 0;
 
 const choices = document.querySelectorAll("button");
