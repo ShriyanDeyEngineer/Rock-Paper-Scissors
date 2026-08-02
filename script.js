@@ -134,26 +134,30 @@ function getComputerChoice()
 
     if(choice == 1)
     {
-        console.log("The computer picked rock");
+        //console.log("The computer picked rock");
+        document.getElementById("computerPick").innerText = "rock";
         return "rock";
     }
     else if(choice == 2)
     {
-        console.log("The computer picked paper");
+        //console.log("The computer picked paper");
+        document.getElementById("computerPick").innerText = "paper";
         return "paper";
     }
     else if(choice == 3)
     {
-        console.log("The computer picked scissors");
+        //console.log("The computer picked scissors");
+        document.getElementById("computerPick").innerText = "scissors";
         return "scissors";
     }
 }
 
-function getHumanChoice()
+function getHumanChoice(choice)
 {
-    let choice = prompt("'rock', 'paper', or 'scissors'? Enter 5 choices");
+    //let choice = prompt("'rock', 'paper', or 'scissors'? Enter 5 choices");
     choice = choice.toLowerCase();
-    console.log("You picked " + choice);
+    //console.log("You picked " + choice);
+    document.getElementById("humanPick").innerText = choice;
     
     //console.log("THIS IS THE USER'S CHOICE: " + choice);
 
@@ -175,74 +179,87 @@ function getHumanChoice()
 
 function playRound(humanChoice, computerChoice)
 {
+    //console.log("entered play");
     if(humanChoice == "rock") //one way to write this is a nested conditional
     {
         if(computerChoice == "rock")
         {
-            console.log("This round is a draw!");
+            //console.log("This round is a draw!");
+            document.getElementById("result").innerText = "This round is a draw!";
         }
-        if(computerChoice == "scissors")
+        else if(computerChoice == "scissors")
         {
-            console.log("You won this round!");
+            //console.log("You won this round!");
+            document.getElementById("result").innerText = "You won this round!";
             humanScore++;
         }
-        if(computerChoice == "paper")
+        else if(computerChoice == "paper")
         {
-            console.log("You lost this round!");
+            //console.log("You lost this round!");
+            document.getElementById("result").innerText = "You lost this round!";
             computerScore++;
         }
     }
 
     if(humanChoice == "paper" && computerChoice == "paper") //another way to write this is conditional with if else statements and boolean operators
     {
-        console.log("This round is a draw!")
+        //console.log("This round is a draw!");
+        document.getElementById("result").innerText = "This round is a draw!";
     }
     else if(humanChoice == "paper" && computerChoice == "rock")
     {
-        console.log("You won this round!");
+        //console.log("You won this round!");
+        document.getElementById("result").innerText = "You won this round!";
         humanScore++;
     }
-    else if(humanChoice == "paper" && computerChoice == "Scissors")
+    else if(humanChoice == "paper" && computerChoice == "scissors")
     {
-        console.log("You lost this round!");
+        //console.log("You lost this round!");
+        document.getElementById("result").innerText = "You lost this round!";
         computerScore++;
     }
 
     if(humanChoice == "scissors" && computerChoice == "scissors")
     {
-        console.log("This round is a draw!");
+        //console.log("This round is a draw!");
+        document.getElementById("result").innerText = "This round is a draw!";
     }
     else if(humanChoice == "scissors" && computerChoice == "paper")
     {
-        console.log("You won this round!")
+        //console.log("You won this round!");
+        document.getElementById("result").innerText = "You won this round!";
         humanScore++;
     }
     else if(humanChoice == "scissors" && computerChoice == "rock")
     {
-        console.log("You lost this round!")
+        //console.log("You lost this round!")
+        document.getElementById("result").innerText = "You lost this round!";
         computerScore++;
     }
+
+    document.getElementById("humanScore").innerText = String(humanScore);
+    document.getElementById("computerScore").innerText = String(computerScore);
 }
 
 
 //main program
 let humanScore = 0, computerScore = 0;
 
-//for(let i = 1; i <= 5; i++)
-//{
+/*for(let i = 1; i <= 5; i++)
+{
     console.log("ROUND " + i + ":");
 
     let cc = getComputerChoice();
-    //console.log(cc);
+    console.log(cc);
 
     let hc = getHumanChoice();
-    //console.log(hc);
+    console.log(hc);
 
     playRound(hc, cc);
     console.log("");
-//}
+/}*/
 
-if(humanScore == computerScore)
+/*if(humanScore == computerScore)
 {
     console.log("This game is a draw!");
     console.log("Human: " + humanScore + " || Computer: " + computerScore);
@@ -256,4 +273,25 @@ else if(humanScore < computerScore)
 {
     console.log("You lost this game!");
     console.log("Human: " + humanScore + " || Computer: " + computerScore);
-}
+}*/
+
+
+
+const choices = document.querySelectorAll("button");
+choices.forEach(element => {
+    element.addEventListener("click", e =>
+    {
+        //console.log("choice selected");
+        //console.log(e);
+
+        //console.log(element.innerText);
+        //playRound(getHumanChoice(), getComputerChoice());
+
+        let choiceString = element.innerText;
+
+        let decisionHuman = getHumanChoice(choiceString);
+        let decisionComputer = getComputerChoice();
+
+        playRound(decisionHuman, decisionComputer);
+    });
+});
